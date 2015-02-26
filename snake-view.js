@@ -24,7 +24,6 @@
   }
 
   var handleKeyEvent = function(event) {
-    console.log(this)
     switch (event.keyCode) {
       case 37:
         this.board.snake.turn("W");
@@ -41,6 +40,10 @@
       default:
         break;
     }
+  }
+
+  View.prototype.render(){
+    
   }
 
 
