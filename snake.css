@@ -8,5 +8,47 @@ html, body, ul, li {
   text-decoration: inherit;*/
   color: inherit;
   background: transparent;
-  font-family: monospace;
+  /*font-family: monospace;*/
+}
+
+li{
+  list-style: none;
+}
+
+.group:after{
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.board {
+  display: block;
+  position: relative;
+  width: 600px;
+  margin: 20px auto;
+  border: 5px solid black;
+}
+
+.board > li {
+  width: 30px;
+  height: 30px;
+  float: left;
+}
+
+.snake {
+  background: green;
+}
+
+.apple {
+  background: red;
+}
+
+.gameover {
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: sans-serif;
+  font-size: 100px;
+  color: #b20000;
 }

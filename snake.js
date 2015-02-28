@@ -17,9 +17,13 @@
     var newHead = new Coord(head.pos[0], head.pos[1]);
     newHead.plus(delta);
 
-    if (newHead.equals(this.board.apple)){
+    if (newHead.equals(this.board.apple)) {      //eat apple, grow
       this.board.resetApple();
-    } else{
+    } else if (this.contains(newHead)) {         //eat self, die
+      throw gameOver;
+    } else if (newHead.outOfBounds()) {          //hit edge
+      throw gameOver;
+    } else {                                     //move snake
       this.segments.pop()
     }
 
@@ -69,11 +73,19 @@
   }
 
   Coord.prototype.equals = function(coord) {
-    return (this.pos[0] === coord[0]) && (this.pos[1] === coord[1]);
+    return (this.pos[0] === coord.pos[0]) && (this.pos[1] === coord.pos[1]);
   }
 
-  Coord.prototype.isOpposite = function(coord) {
+  Coord.prototype.flatCoord = function(coord) {
+    return (this.pos[0] + (this.pos[1] * 20) )
+  }
 
+  Coord.prototype.outOfBounds = function(){
+    if (this.pos[0] < 0 || this.pos[0] >= 20  ||
+        this.pos[1] < 0 || this.pos[1] >= 20){
+      return true;
+    }
+    return false;
   }
 
   var Board = SnakeGame.Board = function(){
@@ -83,37 +95,15 @@
   }
 
   Board.prototype.resetApple = function(){
+    var apple;
     do {
       var x = Math.floor(Math.random() * 20);
       var y = Math.floor(Math.random() * 20);
-      var pos = [x,y];
-    } while (this.snake.contains(pos));
+      apple = new Coord(x, y);
+    } while (this.snake.contains(apple));
 
-    this.apple = pos;
+    this.apple = apple;
 
-  }
-
-  Board.prototype.render = function () {
-    var state = "";
-    for (y = 0; y < 20; y++)
-    {
-      for (x = 0; x < 20; x++)
-      {
-        if (this.snake.contains([x, y]))
-        {
-          state += "S";
-        }
-        else if (this.apple[0] === x && this.apple[1] === y)
-        {
-          state += "A";
-        }
-        else{
-          state += "."
-        }
-      }
-      state += "<br>";
-    }
-    return state;
   }
 
 })();

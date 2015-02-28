@@ -8,7 +8,9 @@
     this.$el = $el;
     this.board = new SnakeGame.Board();
     this.bindEvents();
-    setInterval(this.step.bind(this), 500);
+    this.createBoard();
+    this.$squares = this.$el.find('.board li');
+    this.gameplay = setInterval(this.step.bind(this), 250);
   }
 
   View.prototype.bindEvents = function (){
@@ -18,9 +20,13 @@
   }
 
   View.prototype.step = function () {
-    this.$el.empty();
-    this.board.snake.move();
-    this.$el.append(this.board.render());
+    try {
+      this.board.snake.move();
+      this.render();
+    }
+    catch (gameOver){
+      this.gameOverScreen();
+    }
   }
 
   var handleKeyEvent = function(event) {
@@ -42,8 +48,33 @@
     }
   }
 
-  View.prototype.render(){
-    
+  View.prototype.createBoard = function(){
+    var $board = $('<ul>').addClass('board group');
+    for (var i = 0; i < 400; i++){
+      $board.append($('<li>'));
+    }
+    this.$el.append($board);
+  }
+
+  View.prototype.render = function(){
+    this.$squares.removeClass();
+    var segmentIdx;
+
+    for (var i = 0; i < this.board.snake.segments.length; i++){
+      segmentIdx = this.board.snake.segments[i].flatCoord();
+      this.$squares.eq(segmentIdx).addClass('snake');
+    }
+
+    var appleIdx = this.board.apple.flatCoord();
+
+    this.$squares.eq(appleIdx).addClass('apple');
+  }
+
+  View.prototype.gameOverScreen = function (){
+    clearInterval(this.gameplay);
+    loseScreen = $('<div>').text('Game Over').addClass('gameover');
+    this.$el.find('.board').prepend(loseScreen);
+
   }
 
 
