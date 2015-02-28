@@ -72,9 +72,19 @@
 
   View.prototype.gameOverScreen = function (){
     clearInterval(this.gameplay);
-    loseScreen = $('<div>').text('Game Over').addClass('gameover');
-    this.$el.find('.board').prepend(loseScreen);
+    var gameover = $('<div>').text('Game Over').addClass('gameover');
+    var retry = $('<div>').text('retry').addClass('retry');
+    this.$el.find('.board').prepend(gameover, retry);
 
+    this.$el.find('.retry').on('click', this.restart.bind(this));
+  }
+
+  View.prototype.restart = function () {
+    this.$el.find('.gameover').remove();
+    this.$el.find('.retry').remove();
+
+    this.board = new SnakeGame.Board();
+    this.gameplay = setInterval(this.step.bind(this), 250);
   }
 
 

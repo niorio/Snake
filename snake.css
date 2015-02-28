@@ -47,8 +47,34 @@ li{
   display: block;
   position: absolute;
   top: 20px;
-  left: 20px;
+  left: 40px;
   font-family: sans-serif;
   font-size: 100px;
   color: #b20000;
+}
+
+.retry {
+  display: block;
+  position: absolute;
+  top: 260px;
+  left: 250px;
+  font-family: sans-serif;
+  font-size: 30px;
+  padding: 10px 20px;
+  color: black;
+  cursor: pointer;
+  background: #0c0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 0 0 #070;
+}
+
+.retry:hover {
+  background: #0b0;
+}
+
+.retry:active{
+  top: 263px;
+  background: #0a0;
+  box-shadow: none;
 }
