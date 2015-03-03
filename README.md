@@ -1,3 +1,3 @@
 # Snake
 
-###[Live Demo](niorio.github.io/Snake)
+###[Live Demo](http://niorio.github.io/Snake)
