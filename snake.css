@@ -4,11 +4,8 @@ html, body, ul, li {
   padding: 0;
   border: 0;
   font: inherit;
-  /*text-align: inherit;
-  text-decoration: inherit;*/
   color: inherit;
   background: transparent;
-  /*font-family: monospace;*/
 }
 
 li{
@@ -50,7 +47,7 @@ li{
   left: 40px;
   font-family: sans-serif;
   font-size: 100px;
-  color: #b20000;
+  color: black;
 }
 
 .retry {

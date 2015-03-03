@@ -36,10 +36,8 @@
   }
 
   Snake.prototype.contains = function(coord) {
-    for (var i = 0; i < this.segments.length; i++)
-    {
-      if (this.segments[i].equals(coord))
-      {
+    for (var i = 0; i < this.segments.length; i++) {
+      if (this.segments[i].equals(coord)) {
         return true;
       }
     }
@@ -67,9 +65,9 @@
     this.pos = [x, y];
   }
 
-  Coord.prototype.plus = function(coord) {
-    this.pos[0] += coord[0];
-    this.pos[1] += coord[1];
+  Coord.prototype.plus = function(delta) {
+    this.pos[0] += delta[0];
+    this.pos[1] += delta[1];
   }
 
   Coord.prototype.equals = function(coord) {
