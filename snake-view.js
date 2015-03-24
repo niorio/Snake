@@ -10,7 +10,7 @@
     this.bindEvents();
     this.createBoard();
     this.$squares = this.$el.find('.board li');
-    this.gameplay = setInterval(this.step.bind(this), 250);
+    this.gameplay = setInterval(this.step.bind(this), 150);
   }
 
   View.prototype.bindEvents = function (){
@@ -49,6 +49,9 @@
   }
 
   View.prototype.createBoard = function(){
+    var $title = $('<h1>Snake</h1>').addClass('gametitle');
+    this.$el.append($title);
+
     var $board = $('<ul>').addClass('board group');
     for (var i = 0; i < 400; i++){
       $board.append($('<li>'));
@@ -84,7 +87,7 @@
     this.$el.find('.retry').remove();
 
     this.board = new SnakeGame.Board();
-    this.gameplay = setInterval(this.step.bind(this), 250);
+    this.gameplay = setInterval(this.step.bind(this), 150);
   }
 
 

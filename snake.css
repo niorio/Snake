@@ -18,11 +18,19 @@ li{
   clear: both;
 }
 
+.gametitle{
+  margin: 0 auto;
+  font-family: sans-serif;
+  font-size: 36px;
+  width: 100px;
+  padding: 5px 0;
+}
+
 .board {
   display: block;
   position: relative;
   width: 600px;
-  margin: 20px auto;
+  margin: 0 auto;
   border: 5px solid black;
 }
 
