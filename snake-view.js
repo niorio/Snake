@@ -56,6 +56,10 @@
     for (var i = 0; i < 400; i++){
       $board.append($('<li>'));
     }
+
+    var $score = $('<h2>').addClass('score');
+    $board.append($score);
+
     this.$el.append($board);
   }
 
@@ -71,6 +75,14 @@
     var appleIdx = this.board.apple.flatCoord();
 
     this.$squares.eq(appleIdx).addClass('apple');
+    this.renderScore();
+  }
+
+  View.prototype.renderScore = function () {
+    if (this.score !== this.board.score){
+      this.score = this.board.score;
+      this.$el.find('.score').text("Score: " + this.score);
+    }
   }
 
   View.prototype.gameOverScreen = function (){

@@ -19,6 +19,7 @@
 
     if (newHead.equals(this.board.apple)) {      //eat apple, grow
       this.board.resetApple();
+      this.board.score += 1;
     } else if (this.contains(newHead)) {         //eat self, die
       throw gameOver;
     } else if (newHead.outOfBounds()) {          //hit edge
@@ -90,6 +91,7 @@
     var board = this;
     this.snake = new Snake(board);
     this.resetApple();
+    this.score = 0;
   }
 
   Board.prototype.resetApple = function(){
