@@ -87,9 +87,10 @@
 
   View.prototype.gameOverScreen = function (){
     clearInterval(this.gameplay);
-    var gameover = $('<div>').text('Game Over').addClass('gameover');
-    var retry = $('<div>').text('retry').addClass('retry');
-    this.$el.find('.board').prepend(gameover, retry);
+    var $gameover = $('<div class="gameover">Game Over</div>');
+    var $retry = $('<div class="retry">retry</div>');
+
+    this.$el.find('.board').prepend($gameover, $retry);
 
     this.$el.find('.retry').on('click', this.restart.bind(this));
   }

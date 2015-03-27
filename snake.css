@@ -51,7 +51,7 @@ li{
 .gameover {
   display: block;
   position: absolute;
-  top: 20px;
+  top: 50px;
   left: 40px;
   font-family: sans-serif;
   font-size: 100px;

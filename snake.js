@@ -24,7 +24,7 @@
       throw gameOver;
     } else if (newHead.outOfBounds()) {          //hit edge
       throw gameOver;
-    } else {                                     //move snake
+    } else {                                     //snake moves, doesn't grow
       this.segments.pop()
     }
 
