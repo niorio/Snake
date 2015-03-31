@@ -1,4 +1,6 @@
 
+/*RESET*/
+
 html, body, ul, li {
   margin: 0;
   padding: 0;
@@ -12,11 +14,15 @@ li{
   list-style: none;
 }
 
+/*CLEARFIX*/
+
 .group:after{
   display: block;
   content: "";
   clear: both;
 }
+
+/*GAME*/
 
 .gametitle{
   margin: 0 auto;
@@ -58,7 +64,7 @@ li{
   color: black;
 }
 
-.retry {
+/*.retry {
   display: block;
   position: absolute;
   top: 260px;
@@ -82,7 +88,7 @@ li{
   top: 263px;
   background: #0a0;
   box-shadow: none;
-}
+}*/
 
 .score{
   display: block;
@@ -93,4 +99,63 @@ li{
   font-family: sans-serif;
   font-size: 30px;
   color: black;
+}
+
+.buttons{
+  position: absolute;
+  top: 250px;
+  left: 48px;
+}
+
+.buttons > *{
+  background-color: green;
+  float: left;
+  font-size: 30px;
+  color: white;
+  padding: 5px 10px;
+  margin: 0 10px;
+  font-family: sans-serif;
+  border: 1px solid black;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.buttons > *:active{
+  position: relative;
+  top: 3px;
+}
+/*.buttons > *:hover{
+  position: relative;
+  bottom: 3px;
+}*/
+
+.easy{
+  background-color: #0c0;
+}
+
+.easy:hover{
+  background: #0b0;
+}
+
+.med{
+  background-color: #4D94FF;
+}
+
+.med:hover{
+  background-color: #4585E6;
+}
+
+.hard{
+  background-color: #CC0000;
+}
+
+.hard:hover{
+  background-color: #B80000;
+}
+.insane{
+  background-color: #560000;
+}
+
+.insane:hover{
+  background-color: #4D0000;
 }

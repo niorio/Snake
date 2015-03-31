@@ -10,13 +10,27 @@
     this.createBoard();
     this.board = new SnakeGame.Board();
     this.$squares = this.$el.find('.board li');
-    this.gameplay = setInterval(this.step.bind(this), 150);
+    this.selectDifficulty();
   }
 
   View.prototype.bindEvents = function (){
     this.$el.on('keydown', function (event) {
       handleKeyEvent.call(this, event);
     }.bind(this))
+  }
+
+  View.prototype.selectDifficulty = function (){
+    var $easy = $('<div class="easy" data-speed="250">easy</div>');
+    var $med = $('<div class="med" data-speed="150">medium</div>');
+    var $hard = $('<div class="hard" data-speed="100">hard</div>');
+    var $insane = $('<div class="insane" data-speed="50">insane</div>');
+
+    var $buttons = $('<div class="buttons">').append($easy, $med, $hard, $insane);
+
+
+    this.$el.find('.board').prepend($buttons);
+    this.$el.find('.buttons > *').on('click', this.start.bind(this));
+
   }
 
   View.prototype.step = function () {
@@ -95,19 +109,19 @@
   View.prototype.gameOverScreen = function (){
     clearInterval(this.gameplay);
     var $gameover = $('<div class="gameover">Game Over</div>');
-    var $retry = $('<div class="retry">retry</div>');
+    this.$el.find('.board').prepend($gameover);
 
-    this.$el.find('.board').prepend($gameover, $retry);
-
-    this.$el.find('.retry').on('click', this.restart.bind(this));
+    this.selectDifficulty();
   }
 
-  View.prototype.restart = function () {
+  View.prototype.start = function (event) {
+    var speed = $(event.currentTarget).data('speed');
+
     this.$el.find('.gameover').remove();
-    this.$el.find('.retry').remove();
+    this.$el.find('.buttons').remove();
 
     this.board = new SnakeGame.Board();
-    this.gameplay = setInterval(this.step.bind(this), 150);
+    this.gameplay = setInterval(this.step.bind(this), speed);
   }
 
 
