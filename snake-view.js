@@ -6,9 +6,9 @@
 
   var View = SnakeGame.View = function($el){
     this.$el = $el;
-    this.board = new SnakeGame.Board();
     this.bindEvents();
     this.createBoard();
+    this.board = new SnakeGame.Board();
     this.$squares = this.$el.find('.board li');
     this.gameplay = setInterval(this.step.bind(this), 150);
   }
@@ -52,8 +52,15 @@
     var $title = $('<h1>Snake</h1>').addClass('gametitle');
     this.$el.append($title);
 
+    var squareCount = 400;
+
+    if (window.innerHeight < 660){
+      squareCount = Math.floor((window.innerHeight - 56)/ 30) * 20;
+    }
+    SnakeGame.height = squareCount / 20;
+
     var $board = $('<ul>').addClass('board group');
-    for (var i = 0; i < 400; i++){
+    for (var i = 0; i < squareCount; i++){
       $board.append($('<li>'));
     }
 

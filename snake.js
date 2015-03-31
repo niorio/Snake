@@ -81,17 +81,19 @@
 
   Coord.prototype.outOfBounds = function(){
     if (this.pos[0] < 0 || this.pos[0] >= 20  ||
-        this.pos[1] < 0 || this.pos[1] >= 20){
+        this.pos[1] < 0 || this.pos[1] >= SnakeGame.height){
       return true;
     }
     return false;
   }
 
-  var Board = SnakeGame.Board = function(){
+  var Board = SnakeGame.Board = function(height){
     var board = this;
     this.snake = new Snake(board);
     this.resetApple();
     this.score = 0;
+    this.height = height;
+    console.log(this.height);
   }
 
   Board.prototype.resetApple = function(){
