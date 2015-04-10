@@ -24,6 +24,14 @@ li{
 
 /*GAME*/
 
+body{
+  background-color: #A3FFC2;
+}
+
+li{
+  background-color: white;
+}
+
 .gametitle{
   margin: 0 auto;
   font-family: sans-serif;
